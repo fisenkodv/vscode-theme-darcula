@@ -1,0 +1,46 @@
+{
+    "name": "vscode-theme-darcula",
+    "displayName": "Darcula Theme",
+    "description": "A theme for Visual Studio Code based on IntelliJ IDEA Darcula theme",
+    "version": "1.0.0",
+    "publisher": "fisenkodv",
+    "license": "MIT",
+    "scripts": {
+        "publish": "vsce publish"
+    },
+    "devDependencies": {
+        "vsce": "2.7.0"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/fisenkodv/vscode-theme-darcula"
+    },
+    "bugs": {
+        "url": "https://github.com/fisenkodv/vscode-theme-darcula/issues"
+    },
+    "homepage": "https://github.com/fisenkodv/vscode-theme-darcula",
+    "engines": {
+        "vscode": "^1.76.0"
+    },
+    "categories": [
+        "Themes"
+    ],
+    "icon": "icon.png",
+    "keywords": [
+        "one dark",
+        "onedark",
+        "one dark pro",
+        "onedark pro",
+        "theme",
+        "atom"
+    ],
+    "contributes": {
+        "themes": [
+            {
+                "label": "Darcula",
+                "uiTheme": "vs-dark",
+                "path": "./themes/darcula.json"
+            }
+        ]
+    }
+}
