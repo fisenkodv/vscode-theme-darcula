@@ -247,6 +247,24 @@
             "settings": {
                 "foreground": "#828EBA"
             }
+        },
+        {
+            "scope": ["entity.name.tag.yaml", "constant.language.boolean.yaml"],
+            "settings": {
+                "foreground": "#597CC2"
+            }
+        },
+        {
+            "scope": ["string.unquoted.plain.out.yaml"],
+            "settings": {
+                "foreground": "#AEB5BD"
+            }
+        },
+        {
+            "scope": ["string.quoted.double.yaml"],
+            "settings": {
+                "foreground": "#807D6E"
+            }
         }
     ]
 }
