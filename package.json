@@ -1,7 +1,7 @@
 {
     "name": "vscode-intellij-darcula-theme",
     "displayName": "IntelliJ IDEA Darcula Theme",
-    "description": "A theme for Visual Studio Code based on IntelliJ IDEA Darcula theme",
+    "description": "Visual Studio Code theme based on IntelliJ IDEA Darcula theme",
     "version": "1.0.0",
     "publisher": "fisenkodv",
     "license": "MIT",
@@ -27,7 +27,11 @@
     ],
     "icon": "icon.png",
     "keywords": [
-        "theme"
+        "theme",
+        "darcula",
+        "intellij",
+        "typescript",
+        "javascript"
     ],
     "contributes": {
         "themes": [
