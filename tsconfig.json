@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "commonjs",
+    "outDir": "./dist/src",
+    "declarationDir": "./dist/types",
+    "declaration": true,
+    "emitDecoratorMetadata": true,
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "typeRoots": ["../../node_modules/@types"]
+  },
+  "exclude": ["dist"]
+}
