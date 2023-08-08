@@ -46,7 +46,7 @@ function parseXmlScheme(xml: string): Scheme[] {
         const xmlSchemeElement = $(xmlScheme);
         const scheme: Scheme = {
             name: xmlSchemeElement.attr("name"),
-            parentSchemeName: xmlSchemeElement.attr("parent_scheme")?.toString() ?? null,
+            parentSchemeName: xmlSchemeElement.attr("parent_scheme") ?? null,
             colors: [],
             attributes: []
         };
@@ -55,20 +55,20 @@ function parseXmlScheme(xml: string): Scheme[] {
         for (const xmlColorOption of xmlColorsOptions) {
             const xmlColorOptionElement = $(xmlColorOption);
             const color: OptionWithSingleValue = {
-                name: xmlColorOptionElement.attr("name").toString() as OptionValueName,
-                value: xmlColorOptionElement.attr("value").toString(),
-                deuteranopia: xmlColorOptionElement.attr("deuteranopia")?.toString() ?? null,
-                protanopia: xmlColorOptionElement.attr("protanopia")?.toString() ?? null
+                name: xmlColorOptionElement.attr("name") as OptionValueName,
+                value: xmlColorOptionElement.attr("value"),
+                deuteranopia: xmlColorOptionElement.attr("deuteranopia") ?? null,
+                protanopia: xmlColorOptionElement.attr("protanopia") ?? null
             };
             scheme.colors.push(color);
         }
 
-        const xmlAttributesOptions = $("attributes option", xmlScheme);
+        const xmlAttributesOptions = $("attributes > option", xmlScheme);
         for (const xmlAttributesOption of xmlAttributesOptions) {
             const xmlColorOptionElement = $(xmlAttributesOption);
 
             const attribute: OptionWithMultipleValues = {
-                name: xmlColorOptionElement.attr("name").toString(),
+                name: xmlColorOptionElement.attr("name"),
                 value: []
             };
 
@@ -76,10 +76,10 @@ function parseXmlScheme(xml: string): Scheme[] {
             for (const xmlAttributeOption of xmlAttributeOptions) {
                 const xmlAttributeOptionElement = $(xmlAttributeOption);
                 const attributeValueOption: OptionWithSingleValue = {
-                    name: xmlAttributeOptionElement.attr("name").toString() as OptionValueName,
-                    value: xmlAttributeOptionElement.attr("value").toString(),
-                    deuteranopia: xmlAttributeOptionElement.attr("deuteranopia")?.toString() ?? null,
-                    protanopia: xmlAttributeOptionElement.attr("protanopia")?.toString() ?? null
+                    name: xmlAttributeOptionElement.attr("name") as OptionValueName,
+                    value: xmlAttributeOptionElement.attr("value")?.trim(),
+                    deuteranopia: xmlAttributeOptionElement.attr("deuteranopia") ?? null,
+                    protanopia: xmlAttributeOptionElement.attr("protanopia") ?? null
                 };
 
                 attribute.value.push(attributeValueOption);
@@ -122,6 +122,7 @@ function mergeSchemes(parent: Scheme, child: Scheme): Scheme {
         } else {
             for (const childAttributeValue of childAttribute.value) {
                 const attributeValueFromParent = attributeFromParent.value.find(x => x.name === childAttributeValue.name);
+
                 if (!attributeValueFromParent) {
                     attributeFromParent.value.push(childAttributeValue);
                 } else {
@@ -153,20 +154,25 @@ function getScheme(name: string, schemes: Scheme[]): Scheme {
 }
 
 function mapToTheme(scheme: Scheme) {
-    const theme = { type: "dark", name: "Darcula", tokenColors: [] };
-    const mappings = JSON.parse(fs.readFileSync(path.resolve(path.join("./scripts", "mapping.json")), "utf-8")) as { attribute_name: string; scope: string }[];
+    const mappings = JSON.parse(fs.readFileSync(path.resolve(path.join("./scripts", "mapping.json")), "utf-8")) as {
+        editor: Record<string, string>;
+        syntax: { attribute_name: string; scope: string }[];
+    };
 
-    for (const mapping of mappings) {
+    const theme = { type: "dark", name: "Darcula", semanticHighlighting: true, colors: mappings.editor, tokenColors: [] };
+
+    for (const mapping of mappings.syntax) {
         const attribute = scheme.attributes.find(x => x.name === mapping.attribute_name);
         if (attribute) {
-            const foreground = attribute.value.find(x => x.name === OptionValueName.FOREGROUND);
-            const fontType = attribute.value.find(x => x.name === OptionValueName.FONT_TYPE);
-            if (foreground) {
+            const foregroundValue = attribute.value.find(x => x.name === OptionValueName.FOREGROUND);
+            const fontTypeValue = attribute.value.find(x => x.name === OptionValueName.FONT_TYPE);
+
+            if (foregroundValue) {
                 const token = {
                     scope: mapping.scope,
                     settings: {
-                        foreground: `#${foreground.protanopia ?? foreground.value}`,
-                        fontStyle: fontType?.protanopia ?? fontType?.deuteranopia ?? ""
+                        foreground: `#${foregroundValue.protanopia ?? foregroundValue.value}`,
+                        fontStyle: fontTypeValue?.protanopia ?? fontTypeValue?.deuteranopia ?? ""
                     }
                 };
                 theme.tokenColors.push(token);
@@ -174,7 +180,7 @@ function mapToTheme(scheme: Scheme) {
         }
     }
 
-    console.log(JSON.stringify(theme, null, 2));
+    return theme;
 }
 
 async function main() {
@@ -183,9 +189,9 @@ async function main() {
 
     const schemes = parseXmlScheme(xml);
     const darcula = getScheme("Darcula", schemes);
-    mapToTheme(darcula);
+    const theme = mapToTheme(darcula);
 
-    // console.log(JSON.stringify(darcula, null, 2));
+    console.log(JSON.stringify(theme, null, 2));
 }
 
 main();
