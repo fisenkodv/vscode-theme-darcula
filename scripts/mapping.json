@@ -124,6 +124,11 @@
         { "attribute_name": "YAML_SCALAR_STRING", "scope": "string.quoted.single.yaml" },
         { "attribute_name": "YAML_SCALAR_DSTRING", "scope": "string.quoted.double.yaml" },
         { "attribute_name": "YAML_SCALAR_LIST", "scope": "string.unquoted.block.yaml" },
-        { "attribute_name": "YAML_TEXT", "scope": "string.unquoted.yaml" }
+        { "attribute_name": "YAML_TEXT", "scope": "string.unquoted.yaml" },
+
+        { "attribute_name": "HTML_ATTRIBUTE_NAME", "scope": "entity.other.attribute-name.html,text.html.derivative" },
+        { "attribute_name": "HTML_ATTRIBUTE_VALUE", "scope": "string.quoted.double.html" },
+        { "attribute_name": "HTML_TAG", "scope": "punctuation.definition.tag.begin.html,punctuation.definition.tag.end.html" },
+        { "attribute_name": "HTML_TAG_NAME", "scope": "entity.name.tag.html" }
     ]
 }
