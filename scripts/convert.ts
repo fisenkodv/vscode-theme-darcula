@@ -191,7 +191,7 @@ async function main() {
     const darcula = getScheme("Darcula", schemes);
     const theme = mapToTheme(darcula);
 
-    fs.writeFileSync(`darcula_${Date.now()}.json`, JSON.stringify(theme, null, 2));
+    fs.writeFileSync('./themes/darcula.json', JSON.stringify(theme, null, 2));
 }
 
 main();
