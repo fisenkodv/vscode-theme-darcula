@@ -129,6 +129,14 @@
         { "attribute_name": "HTML_ATTRIBUTE_NAME", "scope": "entity.other.attribute-name.html,text.html.derivative" },
         { "attribute_name": "HTML_ATTRIBUTE_VALUE", "scope": "string.quoted.double.html" },
         { "attribute_name": "HTML_TAG", "scope": "punctuation.definition.tag.begin.html,punctuation.definition.tag.end.html" },
-        { "attribute_name": "HTML_TAG_NAME", "scope": "entity.name.tag.html" }
+        { "attribute_name": "HTML_TAG_NAME", "scope": "entity.name.tag.html" },
+
+        { "attribute_name": "DEFAULT_CONSTANT", "scope": "support.type.property-name.json" },
+        { "attribute_name": "DEFAULT_STRING", "scope": "string.quoted.double.json,punctuation.definition.string.begin.json,punctuation.definition.string.end.json" },
+        {
+            "attribute_name": "TEXT",
+            "scope": "punctuation.definition.dictionary.end.json,punctuation.definition.dictionary.begin.json,punctuation.definition.array.begin.json,punctuation.definition.array.end.json"
+        },
+        { "attribute_name": "DEFAULT_KEYWORD", "scope": "constant.language.json" }
     ]
 }
