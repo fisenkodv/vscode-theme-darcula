@@ -2,7 +2,7 @@
   "name": "vscode-intellij-darcula-theme",
   "displayName": "IntelliJ IDEA Darcula Theme",
   "description": "Visual Studio Code theme based on IntelliJ IDEA Darcula theme",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "publisher": "fisenkodv",
   "license": "MIT",
   "scripts": {

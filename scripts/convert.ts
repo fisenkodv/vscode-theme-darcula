@@ -171,7 +171,7 @@ function mapToTheme(scheme: Scheme) {
         const token = {
           scope: mapping.scope,
           settings: {
-            foreground: `#${mapping.color}` ?? `#${foregroundValue.protanopia ?? foregroundValue.value}`,
+            foreground: mapping.color ? `#${mapping.color}` : `#${foregroundValue.protanopia ?? foregroundValue.value}`,
             fontStyle: fontTypeValue?.protanopia ?? fontTypeValue?.deuteranopia ?? ''
           }
         };
