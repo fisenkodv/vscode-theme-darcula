@@ -136,10 +136,10 @@
     { "attribute_name": "TEXT", "scope": "punctuation.definition.dictionary.end.json,punctuation.definition.dictionary.begin.json,punctuation.definition.array.begin.json,punctuation.definition.array.end.json" },
     { "attribute_name": "DEFAULT_KEYWORD", "scope": "constant.language.json" },
 
-    { "attribute_name": "DEFAULT_KEYWORD", "scope": "support.type.primitive.ts,support.type.builtin.ts,storage.modifier.ts,storage.type.class.ts,storage.type.ts,storage.type.property.ts,storage.modifier.async.ts,storage.type.interface.ts,storage.type.enum.ts,storage.type.type.ts,storage.type.function.ts" },
+    { "attribute_name": "DEFAULT_KEYWORD", "scope": "support.type.primitive.ts,support.type.builtin.ts,storage.modifier.ts,storage.type.class.ts,storage.type.ts,storage.type.property.ts,storage.modifier.async.ts,storage.type.interface.ts,storage.type.enum.ts,storage.type.type.ts,storage.type.function.ts,variable.language.this.ts" },
     { "attribute_name": "DEFAULT_IDENTIFIER", "scope": "variable.parameter.ts,meta.import.ts variable.other.readwrite.alias.ts" },
 
-    { "attribute_name": "DEFAULT_KEYWORD", "scope": "support.type.primitive.tsx,support.type.builtin.tsx,storage.modifier.tsx,storage.type.class.tsx,storage.type.tsx,storage.type.property.tsx,storage.modifier.async.tsx,storage.type.interface.tsx,storage.type.enum.tsx,storage.type.type.tsx,storage.type.function.tsx" },
+    { "attribute_name": "DEFAULT_KEYWORD", "scope": "support.type.primitive.tsx,support.type.builtin.tsx,storage.modifier.tsx,storage.type.class.tsx,storage.type.tsx,storage.type.property.tsx,storage.modifier.async.tsx,storage.type.interface.tsx,storage.type.enum.tsx,storage.type.type.tsx,storage.type.function.tsx,variable.language.this.tsx" },
     { "attribute_name": "DEFAULT_IDENTIFIER", "scope": "variable.parameter.txs,meta.import.tsx variable.other.readwrite.alias.tsx" },
 
     { "attribute_name": "HTML_TAG", "scope": "punctuation.definition.tag.begin.tsx,punctuation.definition.tag.end.tsx" },
